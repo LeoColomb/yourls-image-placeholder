@@ -20,53 +20,53 @@ yourls_add_action( 'redirect_keyword_not_found', 'lpc_generate_image' );
 
 // so prepare generation
 function lpc_generate_image( $request ) {
-	// shorturl is like '200x50'?
-	if( preg_match( "@^([0-9]+)" . SEPARATOR_CHAR . "([0-9]+)$@", $request[0], $matches ) ) {
-		// declare the content file
-		switch ( $_GET["f"] ) {
-			case 'jpg':
-			case 'jpeg':
-				header('Content-Type: image/jpeg');
-				break;
+    // shorturl is like '200x50'?
+    if ( preg_match( "@^([0-9]+)" . SEPARATOR_CHAR . "([0-9]+)$@", $request[0], $matches ) ) {
+        // declare the content file
+        switch ($_GET["f"]) {
+            case 'jpg':
+            case 'jpeg':
+                header('Content-Type: image/jpeg');
+                break;
 
-			case 'gif':
-				header('Content-Type: image/gif');
-				break;
-			
-			case 'png':
-			default:
-				header('Content-Type: image/png');
-				break;
-		}
-		// image generation
-		$image =  imagecreate( $matches[1], $matches[2] );
-		// get background coloration
-		$color = array(
-			'r' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 0, 2) : 26 ),
-			'g' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 2, 2) : 26 ),
-			'b' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 4, 2) : 26 )
-		);
-		imagecolorallocate( $image, $color[r], $color[g], $color[b] );
-		// print the request on image
-		imagestring( $image, 3, 10, 10, $matches[1] . ' x ' . $matches[2], imagecolorallocate( $image, 0, 0, 0 ) );
-		// show image
-		switch ( $_GET["f"] ) {
-			case 'jpg':
-			case 'jpeg':
-				imagejpeg( $image );
-				break;
+            case 'gif':
+                header('Content-Type: image/gif');
+                break;
 
-			case 'gif':
-				imagegif( $image );
-				break;
-			
-			case 'png':
-			default:
-				imagepng( $image );
-				break;
-		}
-		// clean memory
-		imagedestroy( $image );
-		die();
-	}
+            case 'png':
+            default:
+                header('Content-Type: image/png');
+                break;
+        }
+        // image generation
+        $image =  imagecreate( $matches[1], $matches[2] );
+        // get background coloration
+        $color = array(
+            'r' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 0, 2) : 26 ),
+            'g' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 2, 2) : 26 ),
+            'b' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 4, 2) : 26 )
+        );
+        imagecolorallocate( $image, $color[r], $color[g], $color[b] );
+        // print the request on image
+        imagestring( $image, 3, 10, 10, $matches[1] . ' x ' . $matches[2], imagecolorallocate( $image, 0, 0, 0 ) );
+        // show image
+        switch ($_GET["f"]) {
+            case 'jpg':
+            case 'jpeg':
+                imagejpeg( $image );
+                break;
+
+            case 'gif':
+                imagegif( $image );
+                break;
+
+            case 'png':
+            default:
+                imagepng( $image );
+                break;
+        }
+        // clean memory
+        imagedestroy( $image );
+        die();
+    }
 }
