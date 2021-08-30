@@ -3,9 +3,9 @@
 Plugin Name: Simple Image Generation
 Plugin URI: https://github.com/LeoColomb/Limited-Links-for-Yourls
 Description: A quick and simple image placeholder service &mdash; <a href="http://placehold.it">placehold.it</a>
-Version: 1.0
-Author: Leo Colomb
-Author URI: http://colombaro.fr/
+Version: 1.1
+Author: Leo Colombaro
+Author URI: https://colombaro.fr/
 Template: <code>http://sho.rt/[width]x[height]?c=[color]&f=[format]</code><br />Parameters are optional (e.g. http://sho.rt/320x50?c=ffffff).
 */
 
@@ -46,7 +46,7 @@ function lpc_generate_image( $request ) {
             'g' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 2, 2) : 26 ),
             'b' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 4, 2) : 26 )
         );
-        imagecolorallocate( $image, $color[r], $color[g], $color[b] );
+        imagecolorallocate( $image, $color['r'], $color['g'], $color['b'] );
         // print the request on image
         imagestring( $image, 3, 10, 10, $matches[1] . ' x ' . $matches[2], imagecolorallocate( $image, 0, 0, 0 ) );
         // show image
