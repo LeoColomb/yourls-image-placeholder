@@ -42,9 +42,9 @@ function lpc_generate_image( $request ) {
         $image =  imagecreate( $matches[1], $matches[2] );
         // get background coloration
         $color = array(
-            'r' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 0, 2) : 26 ),
-            'g' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 2, 2) : 26 ),
-            'b' => '0x' . ( ( $_GET["c"] ) ? substr($_GET["c"], 4, 2) : 26 )
+            'r' => hexdec( ( $_GET["c"] ) ? substr($_GET["c"], 0, 2) : 26 ),
+            'g' => hexdec( ( $_GET["c"] ) ? substr($_GET["c"], 2, 2) : 26 ),
+            'b' => hexdec( ( $_GET["c"] ) ? substr($_GET["c"], 4, 2) : 26 )
         );
         imagecolorallocate( $image, $color['r'], $color['g'], $color['b'] );
         // print the request on image
