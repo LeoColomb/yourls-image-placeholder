@@ -3,7 +3,7 @@
 Plugin Name: Simple Image Generation
 Plugin URI: https://github.com/LeoColomb/yourls-image-placeholder
 Description: A quick and simple image placeholder service &mdash; <a href="http://placehold.it">placehold.it</a>
-Version: 1.1
+Version: 1.2
 Author: Leo Colombaro
 Author URI: https://colombaro.fr/
 Template: <code>http://sho.rt/[width]x[height]?c=[color]&f=[format]</code><br />Parameters are optional (e.g. http://sho.rt/320x50?c=ffffff).
