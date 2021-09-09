@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Simple Image Generation
-Plugin URI: https://github.com/LeoColomb/Limited-Links-for-Yourls
+Plugin URI: https://github.com/LeoColomb/yourls-image-placeholder
 Description: A quick and simple image placeholder service &mdash; <a href="http://placehold.it">placehold.it</a>
 Version: 1.1
 Author: Leo Colombaro
