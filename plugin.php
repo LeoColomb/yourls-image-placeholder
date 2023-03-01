@@ -47,8 +47,16 @@ function lpc_generate_image( $request ) {
             'b' => hexdec( ( $_GET["c"] ) ? substr($_GET["c"], 4, 2) : 26 )
         );
         imagecolorallocate( $image, $color['r'], $color['g'], $color['b'] );
+
+        // font size
+        $font = 4; // only 1 to 5
+        // total string length
+        $text_length = strlen($matches[1]) + strlen($matches[2]) + strlen(' x ');
+        // text length based on font width
+        $font_width = imagefontwidth($font) * $text_length;
+
         // print the request on image
-        imagestring( $image, 3, 10, 10, $matches[1] . ' x ' . $matches[2], imagecolorallocate( $image, 0, 0, 0 ) );
+        imagestring( $image, $font, ($matches[1] - $font_width) / 2, ($matches[2] - imagefontheight($font)) / 2, $matches[1] . ' x ' . $matches[2], imagecolorallocate( $image, 0, 0, 0 ) );
         // show image
         switch ($_GET["f"]) {
             case 'jpg':
